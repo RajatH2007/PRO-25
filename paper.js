@@ -1,16 +1,17 @@
-class paper{
+class Paper{
 	constructor(x,y,r){
 	
 		var options={
-		   isStatic = true,	
+		   isStatic: false,	
            restitution:0.3,
-		   friction:0,
+		   friction:0.5,
 		   density:1.2
 		}
-        
+        this.x = x;
+		this.y = y
 		this.r = r;
-		this.image = loadImage("paper.png");
-		this.body=Bodies.circle(x, y, 20, options);
+		//this.image = loadImage("paper.png");
+		this.body=Bodies.circle(this.x, this.y, this.r/2, options);
         
 		World.add(world, this.body);
 
@@ -22,7 +23,8 @@ class paper{
 
 		translate(pos.x, pos.y);
 		ellipseMode(CENTER);
-        ellipse(0,0,this.r);
+		fill("black")
+        ellipse(0,0,this.r, this.r);
 		pop();
 	}
 
